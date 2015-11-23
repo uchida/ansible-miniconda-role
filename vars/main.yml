@@ -1,0 +1,6 @@
+miniconda_installer: Miniconda{{ "3" if miniconda_python == "3" else "" }}-{{ miniconda_version }}-{{ miniconda_systems[ansible_system] }}-{{ 'x86_64' if ansible_architecture == 'x86_64' else 'x86' }}.sh
+miniconda_systems:
+  Linux: Linux
+  Darwin: MacOSX
+miniconda_env_arg: "{{ ['-n', miniconda_env] | join(' ') if miniconda_env != '' else ''}}"
+miniconda_channel_arg: "{{ ['-c', miniconda_channel | basename] | join(' ') if miniconda_channel != '' else ''}}"

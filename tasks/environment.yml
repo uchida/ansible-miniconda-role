@@ -1,0 +1,19 @@
+---
+
+- name: conda environment {{ miniconda_env['name'] }} is created
+  command:
+    '"{{ miniconda_prefix }}/bin/conda" env create -f "/tmp/{{ miniconda_env.name }}-environment.yml" -q'
+  args:
+    creates: '{{ miniconda_prefix }}/envs/{{ miniconda_env.name }}'
+  register: miniconda_env_create
+  when: miniconda_env != ''
+  become: yes
+  become_user: "{{ miniconda_user }}"
+
+- name: conda environment {{ miniconda_env['name'] }} is up-to-date
+  command:
+    '"{{ miniconda_prefix }}/bin/conda" env update -f "/tmp/{{ miniconda_env.name }}-environment.yml"'
+  when: '"skipped" in miniconda_env_create.stdout and miniconda_update_env'
+  become: yes
+  become_user: "{{ miniconda_user }}"
+

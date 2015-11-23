@@ -1,0 +1,7 @@
+miniconda_python: 3
+miniconda_version: "3.16.0"
+miniconda_user: ""
+miniconda_prefix: ""
+miniconda_update_conda: False
+miniconda_env: ""
+miniconda_update_env: False

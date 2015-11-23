@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Akihiro Uchida
+  description: role to install miniconda and create conda environment
+  license: Unlicense
+  min_ansible_version: 1.9
+  platforms:
+  - name: Ubuntu
+    versions:
+     - wily
+     - vivid
+     - trusty
+  categories:
+  - packaging
+dependencies: []

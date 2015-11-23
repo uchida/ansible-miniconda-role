@@ -1,0 +1,37 @@
+---
+
+- name: miniconda installer is downloaded
+  get_url:
+    url="https://repo.continuum.io/miniconda/{{ miniconda_installer }}"
+    dest=/tmp/{{ miniconda_installer }}
+    mode=0755
+
+- name: directory {{ miniconda_prefix | dirname }} is existed and owned by {{ miniconda_user }}
+  file:
+    path={{ miniconda_prefix | dirname }}
+    state=directory
+    owner={{ miniconda_user }}
+  become: yes
+
+- name: miniconda is installed
+  command:
+    '"/tmp/{{ miniconda_installer}}" -b -p "{{ miniconda_prefix }}"'
+  args:
+    creates: "{{ miniconda_prefix }}"
+  become: yes
+  become_user: "{{ miniconda_user }}"
+
+- name: miniconda is up-to-date
+  command: '"{{ miniconda_prefix }}/bin/conda" update conda -y -q'
+  when: miniconda_update_conda
+  become: yes
+  become_user: "{{ miniconda_user }}"
+
+- name: conda environment file /tmp/{{ miniconda_env["name"] }}-environment.yml is created
+  copy:
+    content="{{ miniconda_env | to_yaml }}"
+    dest="/tmp/{{ miniconda_env.name }}-environment.yml"
+  when: miniconda_env != ''
+
+- include: environment.yml
+  when: miniconda_env != ''
