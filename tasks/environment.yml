@@ -10,10 +10,10 @@
   become: yes
   become_user: "{{ miniconda_user }}"
 
-- name: conda environment {{ miniconda_env['name'] }} is up-to-date
+- name: conda environment {{ miniconda_env.name }} is up-to-date
   command:
     '"{{ miniconda_prefix }}/bin/conda" env update -f "/tmp/{{ miniconda_env.name }}-environment.yml"'
-  when: '"skipped" in miniconda_env_create.stdout and miniconda_update_env'
+  when: '"skipped" in miniconda_env_create.stdout'
   become: yes
   become_user: "{{ miniconda_user }}"
 

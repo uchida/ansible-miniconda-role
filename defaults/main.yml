@@ -4,4 +4,3 @@ miniconda_user: ""
 miniconda_prefix: ""
 miniconda_update_conda: False
 miniconda_env: ""
-miniconda_update_env: False

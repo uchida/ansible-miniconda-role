@@ -16,7 +16,6 @@ miniconda_user: ""
 miniconda_prefix: ""
 miniconda_update_conda: False
 miniconda_env: ""
-miniconda_update_env: False
 ```
 
 `miniconda_python` is a variable to specify python version miniconda based on.
@@ -53,9 +52,6 @@ miniconda_env:
     - pip:
       - Flask-Testing
 ```
-
-`miniconda_update_env` is a variable to specify
-wheather to update `miniconda_env` or not after environment creation
 
 ## Example Playbooks
 
