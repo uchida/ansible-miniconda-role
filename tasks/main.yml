@@ -23,7 +23,9 @@
 
 - name: miniconda is up-to-date
   command: '"{{ miniconda_prefix }}/bin/conda" update conda -y -q'
+  register: miniconda_update
   when: miniconda_update_conda
+  changed_when: '"All requested packages already installed" in miniconda_update'
   become: yes
   become_user: "{{ miniconda_user }}"
 
