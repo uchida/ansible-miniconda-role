@@ -19,7 +19,7 @@ miniconda_env: ""
 ```
 
 `miniconda_python` is a variable to specify python version miniconda based on.
-default: `3`.
+default: `3`: install and use python3 based miniconda.
 
 `miniconda_version` is a variable to specify version of miniconda.
 default: `"3.16.0"`.
@@ -29,7 +29,7 @@ default: `"{{ ansible_user_id }}"`.
 
 `miniconda_prefix` is a variable to specify install prefix for miniconda.
 default: `"{{ ansible_user_dir }}/miniconda{{ miniconda_python if miniconda_python == 3 else '' }}"`:
-such as `~/miniconda{,3}`, it depends on `miniconda_python` and `miniconda_user`
+such as `~/miniconda{,3}`, it depends on `miniconda_python` and `miniconda_user`.
 
 `miniconda_update_conda` is a variable to specify wheather to run `conda update conda` or not
 default: `False`: do not update conda.
