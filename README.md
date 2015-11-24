@@ -12,8 +12,8 @@ Available variables are listed below, along with default values:
 ```yaml
 miniconda_python: 3
 miniconda_version: "3.16.0"
-miniconda_user: ""
-miniconda_prefix: ""
+miniconda_user: "{{ ansible_user_id }}"
+miniconda_prefix: "{{ ansible_user_dir }}/miniconda{{ miniconda_python if miniconda_python == 3 else '' }}"
 miniconda_update_conda: False
 miniconda_env: ""
 ```
@@ -25,11 +25,11 @@ default: `3`.
 default: `"3.16.0"`.
 
 `miniconda_user` is a variable to specify install user of miniconda.
-default: `"{{ ansible_user }}"`.
+default: `"{{ ansible_user_id }}"`.
 
 `miniconda_prefix` is a variable to specify install prefix for miniconda.
-default: `""`, install miniconda default prefix such as `$HOME/miniconda` or `$HOME/miniconda3`,
-it depends on `miniconda_python` and `miniconda_user` `$HOME`.
+default: `"{{ ansible_user_dir }}/miniconda{{ miniconda_python if miniconda_python == 3 else '' }}"`:
+such as `~/miniconda{,3}`, it depends on `miniconda_python` and `miniconda_user`
 
 `miniconda_update_conda` is a variable to specify wheather to run `conda update conda` or not
 default: `False`: do not update conda.

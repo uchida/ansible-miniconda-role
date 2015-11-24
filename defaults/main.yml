@@ -1,6 +1,6 @@
 miniconda_python: 3
 miniconda_version: "3.16.0"
-miniconda_user: ""
-miniconda_prefix: ""
+miniconda_user: "{{ ansible_user_id }}"
+miniconda_prefix: "{{ ansible_user_dir }}/miniconda{{ miniconda_python if miniconda_python == 3 else '' }}"
 miniconda_update_conda: False
 miniconda_env: ""
