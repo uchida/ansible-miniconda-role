@@ -28,8 +28,7 @@ default: `"3.16.0"`.
 default: `"{{ ansible_user_id }}"`.
 
 `miniconda_prefix` is a variable to specify install prefix for miniconda.
-default: `"{{ ansible_user_dir }}/miniconda{{ miniconda_python if miniconda_python == 3 else '' }}"`:
-such as `~/miniconda{,3}`, it depends on `miniconda_python` and `miniconda_user`.
+default: `~/miniconda` or `~/miniconda3`, it depends on `miniconda_python` and `miniconda_user`.
 
 `miniconda_update_conda` is a variable to specify wheather to run `conda update conda` or not
 default: `False`: do not update conda.
