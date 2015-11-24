@@ -3,14 +3,14 @@
 - name: miniconda installer is downloaded
   get_url:
     url="https://repo.continuum.io/miniconda/{{ miniconda_installer }}"
-    dest=/tmp/{{ miniconda_installer }}
+    dest="/tmp/{{ miniconda_installer }}"
     mode=0755
 
 - name: directory {{ miniconda_prefix | dirname }} is existed and owned by {{ miniconda_user }}
   file:
-    path={{ miniconda_prefix | dirname }}
+    path="{{ miniconda_prefix | dirname }}"
     state=directory
-    owner={{ miniconda_user }}
+    owner="{{ miniconda_user }}"
   become: yes
 
 - name: miniconda is installed
