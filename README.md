@@ -25,15 +25,14 @@ default: `3`.
 default: `"3.16.0"`.
 
 `miniconda_user` is a variable to specify install user of miniconda.
-default: `""`, user `{{ ansible_user }}`.
+default: `"{{ ansible_user }}"`.
 
 `miniconda_prefix` is a variable to specify install prefix for miniconda.
 default: `""`, install miniconda default prefix such as `$HOME/miniconda` or `$HOME/miniconda3`,
-last number depends on `miniconda_python` and `$HOME` depends on `miniconda_user`.
+it depends on `miniconda_python` and `miniconda_user` `$HOME`.
 
-`miniconda_update_conda` is a variable to specify
-wheather to update conda itself or not after miniconda installation
-default: `False` do not update conda
+`miniconda_update_conda` is a variable to specify wheather to run `conda update conda` or not
+default: `False`: do not update conda.
 
 `miniconda_env` is a variable to specify conda environment to create.
 default is `""`, nothing will be created.
