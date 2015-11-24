@@ -1,6 +1,6 @@
 ---
 
-- name: conda environment {{ miniconda_env['name'] }} is created
+- name: conda environment {{ miniconda_env.name }} is created
   command:
     '"{{ miniconda_prefix }}/bin/conda" env create -f "/tmp/{{ miniconda_env.name }}-environment.yml" -q'
   args:
