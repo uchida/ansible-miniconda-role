@@ -1,13 +1,13 @@
-# ansible-miniconda-role
+# uchida.miniconda
 
 [![CircleCI](https://img.shields.io/circleci/project/uchida/ansible-miniconda-role.svg)](https://circleci.com/gh/uchida/ansible-miniconda-role)
 [![License](https://img.shields.io/github/license/uchida/ansible-miniconda-role.svg)](http://unlicense.org/)
 
-role to install miniconda, Python-agnostic binary package manager.
+ansible role to install miniconda, Python-agnostic binary package manager.
 
 ## Role Variables
 
-Available variables are listed below, along with default values:
+Available role variables are listed below, along with default values:
 
 ```yaml
 miniconda_python: 3
@@ -56,7 +56,7 @@ miniconda_env:
 ```yaml
 - hosts: servers
   roles:
-    - role: ansible-miniconda-role
+    - role: uchida.miniconda
       miniconda_python: 2
       miniconda_user: vagrant
       miniconda_prefix: /opt/miniconda
