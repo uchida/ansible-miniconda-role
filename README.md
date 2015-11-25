@@ -69,8 +69,8 @@ miniconda_env:
           - matplotlib=1.4.0
 ```
 
+
 ## License
 
-This is free and unencumbered public domain software.  For more information,
-see http://unlicense.org/ or the accompanying [unlicense](unlicense) file.
-
+[![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png "CC0")](http://creativecommons.org/publicdomain/zero/1.0/deed)
+dedicated to public domain
