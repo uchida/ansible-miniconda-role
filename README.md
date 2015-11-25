@@ -1,7 +1,7 @@
 # uchida.miniconda
 
 [![CircleCI](https://img.shields.io/circleci/project/uchida/ansible-miniconda-role.svg)](https://circleci.com/gh/uchida/ansible-miniconda-role)
-[![License](https://img.shields.io/github/license/uchida/ansible-miniconda-role.svg)](http://unlicense.org/)
+[![License](https://img.shields.io/github/license/uchida/ansible-miniconda-role.svg)](https://tldrlegal.com/license/creative-commons-cc0-1.0-universal)
 
 ansible role to install miniconda, Python-agnostic binary package manager.
 
