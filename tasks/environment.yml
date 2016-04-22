@@ -7,8 +7,6 @@
     creates: '{{ miniconda_prefix }}/envs/{{ miniconda_env.name }}'
   register: miniconda_env_create
   when: miniconda_env != ''
-  become: yes
-  become_user: "{{ miniconda_user }}"
 
 - name: conda environment {{ miniconda_env.name }} is up-to-date
   command:
@@ -16,6 +14,4 @@
   register: miniconda_env_update
   when: '"skipped" in miniconda_env_create.stdout'
   changed_when: '"COMPLETE" in miniconda_env_update.stdout'
-  become: yes
-  become_user: "{{ miniconda_user }}"
 

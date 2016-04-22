@@ -13,7 +13,6 @@ Available role variables are listed below, along with default values:
 ```yaml
 miniconda_python: 3
 miniconda_version: "3.16.0"
-miniconda_user: "{{ ansible_user_id }}"
 miniconda_prefix: "{{ ansible_user_dir }}/miniconda{{ miniconda_python if miniconda_python == 3 else '' }}"
 miniconda_update_conda: False
 miniconda_env: ""
@@ -25,11 +24,8 @@ default: `3`: install and use python3 based miniconda.
 `miniconda_version` is a variable to specify version of miniconda.
 default: `"3.16.0"`.
 
-`miniconda_user` is a variable to specify install user of miniconda.
-default: `"{{ ansible_user_id }}"`.
-
 `miniconda_prefix` is a variable to specify install prefix for miniconda.
-default: `~/miniconda` or `~/miniconda3`, it depends on `miniconda_python` and `miniconda_user`.
+default: `~/miniconda` or `~/miniconda3`, it depends on `miniconda_python`.
 
 `miniconda_update_conda` is a variable to specify wheather to run `conda update conda` or not
 default: `False`: do not update conda.
@@ -59,7 +55,6 @@ miniconda_env:
   roles:
     - role: uchida.miniconda
       miniconda_python: 2
-      miniconda_user: vagrant
       miniconda_prefix: /opt/miniconda
       miniconda_env:
         name: scipy

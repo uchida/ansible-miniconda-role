@@ -6,12 +6,10 @@
     dest="/tmp/{{ miniconda_installer }}"
     mode=0755
 
-- name: directory {{ miniconda_prefix | dirname }} is existed and owned by {{ miniconda_user }}
+- name: directory {{ miniconda_prefix | dirname }} is exists
   file:
     path="{{ miniconda_prefix | dirname }}"
     state=directory
-    owner="{{ miniconda_user }}"
-  become: yes
 
 - name: miniconda is installed
   shell:
@@ -19,16 +17,12 @@
   args:
     creates: "{{ miniconda_prefix }}"
     executable: /bin/bash
-  become: yes
-  become_user: "{{ miniconda_user }}"
 
 - name: miniconda is up-to-date
   command: '"{{ miniconda_prefix }}/bin/conda" update conda -y -q'
   register: miniconda_update
   when: miniconda_update_conda
   changed_when: '"All requested packages already installed" in miniconda_update'
-  become: yes
-  become_user: "{{ miniconda_user }}"
 
 - name: conda environment file /tmp/{{ miniconda_env.name }}-environment.yml is created
   copy:
