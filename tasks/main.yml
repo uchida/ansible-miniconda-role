@@ -14,10 +14,11 @@
   become: yes
 
 - name: miniconda is installed
-  command:
+  shell:
     '"/tmp/{{ miniconda_installer}}" -b -p "{{ miniconda_prefix }}"'
   args:
     creates: "{{ miniconda_prefix }}"
+    executable: /bin/bash
   become: yes
   become_user: "{{ miniconda_user }}"
 
