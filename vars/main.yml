@@ -1,4 +1,9 @@
-miniconda_installer: Miniconda{{ "3" if miniconda_python == 3 else "" }}-{{ miniconda_version }}-{{ miniconda_systems[ansible_system] }}-{{ 'x86_64' if ansible_architecture == 'x86_64' else 'x86' }}.sh
+miniconda_installer: Miniconda{{ "3" if miniconda_python == 3 else "" }}-{{ miniconda_version }}-{{ miniconda_systems[ansible_system] }}-{{ miniconda_arch[ansible_architecture] }}.sh
 miniconda_systems:
   Linux: Linux
   Darwin: MacOSX
+miniconda_architecture:
+  x86_64: x86_64
+  i386: x86
+  armv7l: armv7l
+  ppc64le: ppc64le
