@@ -4,6 +4,8 @@
   get_url:
     url="https://repo.continuum.io/miniconda/{{ miniconda_installer }}"
     dest="/tmp/{{ miniconda_installer }}"
+    checksum="{{ miniconda_installer_checksum }}"
+    force={{ 'yes' if miniconda_installer_checksum == '' else 'no' }}
     mode=0755
 
 - name: directory {{ miniconda_prefix | dirname }} is exists
