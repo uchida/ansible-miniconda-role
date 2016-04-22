@@ -20,5 +20,6 @@ script:
   - ansible-lint tests/test.yml
 
 notifications:
+  email: false
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
 
