@@ -2,22 +2,34 @@
 language: python
 python: "2.7"
 
-sudo: false
+dist: trusty
+sudo: required
 
-addons:
-  apt:
-    packages:
-    - python-pip
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y python-pip
+  - sudo apt-get install -y apt-transport-https ca-certificates
+  - sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+  - echo 'deb https://apt.dockerproject.org/repo ubuntu-trusty main' | sudo tee /etc/apt/sources.list.d/docker.list
+  - sudo apt-get update
+  - sudo apt-get purge -y lxc-docker
+  - sudo apt-get install -o Dpkg::Options::="--force-confdef" -y docker-engine
+  - docker version
+  - docker pull ubuntu:latest
+  - docker run --name test -di ubuntu
+  - docker exec test apt-get update
+  - docker exec test apt-get install -y python ca-certificates
 
 install:
   - pip install ansible
   - ansible --version
-  - printf '[defaults]\nroles_path=../' >ansible.cfg
+  - printf '[defaults]\nroles_path=../' > ansible.cfg
   - pip install ansible-lint
 
 script:
   - ansible-playbook -i localhost, --syntax-check tests/test.yml
   - ansible-lint tests/test.yml
+  - ansible-playbook -i test, tests/test.yml
 
 notifications:
   email: false
