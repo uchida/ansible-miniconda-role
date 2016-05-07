@@ -13,6 +13,12 @@
     path="{{ miniconda_prefix | dirname }}"
     state=directory
 
+- name: bzip2 is installed
+  apt:
+    name=bzip2
+    state=present
+  when: ansible_os_family == "Debian"
+
 - name: miniconda is installed
   shell:
     '"/tmp/{{ miniconda_installer}}" -b -p "{{ miniconda_prefix }}"'

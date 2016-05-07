@@ -14,7 +14,6 @@ before_install:
   - docker run --name test -di ubuntu | tee container_id
   - docker exec $(cat container_id) apt-get update
   - docker exec $(cat container_id) apt-get install -y python ca-certificates
-  - docker exec $(cat container_id) apt-get install -y bzip2
 
 install:
   - pip install ansible
