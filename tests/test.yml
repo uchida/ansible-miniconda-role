@@ -1,6 +1,7 @@
 ---
 - hosts: test
   connection: docker
+  remote_user: root # workaround to ansible gives -u None
   roles:
     - role: ansible-miniconda-role
       miniconda_python: 2
