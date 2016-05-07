@@ -1,6 +1,6 @@
 ---
-- hosts: all
-  become: yes
+- hosts: test
+  connection: docker
   roles:
     - role: ansible-miniconda-role
       miniconda_python: 2
