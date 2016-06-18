@@ -34,7 +34,7 @@
 
 - name: conda environment file /tmp/{{ miniconda_env.name }}-environment.yml is created
   copy:
-    content="{{ miniconda_env | to_yaml }}"
+    content="{{ miniconda_env | to_nice_yaml }}"
     dest="/tmp/{{ miniconda_env.name }}-environment.yml"
   when: miniconda_env != ''
 
