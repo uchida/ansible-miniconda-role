@@ -7,6 +7,7 @@
     creates: '{{ miniconda_prefix }}/envs/{{ miniconda_env.name }}'
   register: miniconda_env_create
   when: miniconda_env != ''
+  failed_when: miniconda_env_create.rc != 0 or miniconda_env_create.stderr != ''
 
 - name: conda environment {{ miniconda_env.name }} is up-to-date
   command:
@@ -14,4 +15,5 @@
   register: miniconda_env_update
   when: '"skipped" in miniconda_env_create.stdout'
   changed_when: '"COMPLETE" in miniconda_env_update.stdout'
+  failed_when: miniconda_env_update.rc != 0 or miniconda_env_update.stderr != ''
 
