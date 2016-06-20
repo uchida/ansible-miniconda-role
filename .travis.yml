@@ -30,9 +30,9 @@ install:
 script:
   - ansible-playbook -i localhost, --syntax-check tests/test.yml
   - ansible-lint tests/test.yml
-  - ansible-playbook -i test, tests/test.yml
-  - bash -c 'ansible-playbook -i test, tests/fail-1.yml && exit 1 || exit 0'
-  - bash -c 'ansible-playbook -i test, tests/fail-2.yml && exit 1 || exit 0'
+  - ansible-playbook -i test, -v tests/test.yml
+  - bash -c 'ansible-playbook -i test, -v tests/fail-1.yml && exit 1 || exit 0'
+  - bash -c 'ansible-playbook -i test, -v tests/fail-2.yml && exit 1 || exit 0'
 
 notifications:
   email: false
