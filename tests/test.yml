@@ -5,6 +5,7 @@
   roles:
     - role: ansible-miniconda-role
       miniconda_python: 2
+      miniconda_update_conda: True
       miniconda_prefix: /opt/miniconda
       miniconda_env:
         name: scipy-lecture
