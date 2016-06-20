@@ -4,7 +4,8 @@
   remote_user: root # workaround to ansible 2.0.2 gives -u None
   roles:
     - role: ansible-miniconda-role
-      miniconda_python: 2
+      miniconda_python: 3
+      miniconda_version: 4.0.5
       miniconda_prefix: /opt/miniconda
       miniconda_env:
         name: invalid-pip-package
