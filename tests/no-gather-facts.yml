@@ -1,0 +1,17 @@
+---
+- hosts: test
+  connection: docker
+  remote_user: root # workaround to ansible 2.0.2 gives -u None
+  gather_facts: no
+  roles:
+    - role: ansible-miniconda-role
+      miniconda_python: 2
+      miniconda_prefix: /opt/miniconda
+      miniconda_env:
+        name: scipy-lecture
+        dependencies:
+          - python=3
+          - numpy=1.9
+          - scipy=0.14.0
+          - matplotlib=1.4.0
+

@@ -29,9 +29,7 @@ install:
   - ansible-lint --version
 
 script:
-  - ansible-playbook -i localhost, --syntax-check tests/test.yml
-  - ansible-lint tests/test.yml
-  - ansible-playbook -i test, tests/test.yml
+  - tests/run-all.sh
 
 notifications:
   email: false
