@@ -14,4 +14,7 @@
           - numpy=1.9
           - scipy=0.14.0
           - matplotlib=1.4.0
+      ansible_system: Linux
+      ansible_os_family: Debian
+      ansible_architecture: x86_64
 
