@@ -21,11 +21,10 @@
   when: ansible_os_family == "Debian"
 
 - name: miniconda is installed
-  shell:
-    '"/tmp/{{ miniconda_installer}}" -b -p "{{ miniconda_prefix }}"'
+  command:
+    '/bin/bash "/tmp/{{ miniconda_installer}}" -b -p "{{ miniconda_prefix }}"'
   args:
     creates: "{{ miniconda_prefix }}"
-    executable: /bin/bash
 
 - name: miniconda is up-to-date
   command: '"{{ miniconda_prefix }}/bin/conda" update conda -y -q'

@@ -26,6 +26,7 @@ install:
   - ansible --version
   - printf '[defaults]\nroles_path=../\ncallback_whitelist=profile_tasks' > ansible.cfg
   - pip install ansible-lint
+  - ansible-lint --version
 
 script:
   - ansible-playbook -i localhost, --syntax-check tests/test.yml
