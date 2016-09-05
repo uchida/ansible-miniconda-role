@@ -46,7 +46,7 @@ before_install:
 install:
   - pip install ansible
   - ansible --version
-  - printf '[defaults]\nroles_path=../\ncallback_whitelist=profile_tasks' > ansible.cfg
+  - printf '[defaults]\nroles_path=../\ncallback_whitelist=profile_tasks' | tee ansible.cfg
   - pip install ansible-lint
   - ansible-lint --version
 
