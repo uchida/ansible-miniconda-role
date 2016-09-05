@@ -7,6 +7,9 @@ env:
   - IMAGE=ubuntu TAG=precise
   - IMAGE=debian TAG=jessie
   - IMAGE=debian TAG=wheezy
+  - IMAGE=centos TAG=7
+  - IMAGE=centos TAG=6
+  - IMAGE=fedora TAG=latest
 
 cache: pip
 
