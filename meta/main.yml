@@ -18,6 +18,6 @@ galaxy_info:
     versions:
       - 7
       - 6
-  categories:
+  galaxy_tags:
   - packaging
 dependencies: []
