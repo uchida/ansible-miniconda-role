@@ -15,10 +15,9 @@
     follow=yes
 
 - name: bzip2 is installed
-  apt:
+  package:
     name=bzip2
     state=present
-  when: ansible_os_family == "Debian"
 
 - name: miniconda is installed
   command:
