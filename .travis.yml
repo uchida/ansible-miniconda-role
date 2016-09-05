@@ -26,7 +26,7 @@ before_install:
   - sudo apt-get install -o Dpkg::Options::="--force-confdef" -y docker-engine
   - docker version
   - docker pull $IMAGE:$TAG
-  - docker run --name test -di $IMAGE:$TAG
+  - docker run --name test -di $IMAGE:$TAG /bin/sh
   - docker exec test apt-get update
   - docker exec test apt-get install -y python ca-certificates
 
