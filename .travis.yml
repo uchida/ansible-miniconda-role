@@ -1,6 +1,12 @@
 ---
 language: python
 python: "2.7"
+env:
+  - IMAGE=ubuntu TAG=xenial
+  - IMAGE=ubuntu TAG=trusty
+  - IMAGE=ubuntu TAG=precise
+  - IMAGE=debian TAG=jessie
+  - IMAGE=debian TAG=wheezy
 
 cache: pip
 
@@ -16,8 +22,8 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -o Dpkg::Options::="--force-confdef" -y docker-engine
   - docker version
-  - docker pull ubuntu:latest
-  - docker run --name test -di ubuntu
+  - docker pull $IMAGE:$TAG
+  - docker run --name test -di $IMAGE:$TAG
   - docker exec test apt-get update
   - docker exec test apt-get install -y python ca-certificates
 
