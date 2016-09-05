@@ -6,12 +6,12 @@
   args:
     creates: '{{ miniconda_prefix }}/envs/{{ miniconda_env.name }}'
   register: miniconda_env_create
-  when: miniconda_env != ''
+  when: miniconda_env != '' and miniconda_env.name != 'root'
 
 - name: conda environment {{ miniconda_env.name }} is up-to-date
   command:
-    '"{{ miniconda_prefix }}/bin/conda" env update -f "/tmp/{{ miniconda_env.name }}-environment.yml" -q'
+    '"{{ miniconda_prefix }}/bin/conda" env update -n "{{ miniconda_env.name }}" -f "/tmp/{{ miniconda_env.name }}-environment.yml"'
   register: miniconda_env_update
-  when: '"skipped" in miniconda_env_create.stdout'
+  when: (miniconda_env.name == 'root') or ('"skipped" in miniconda_env_create.stdout')
   changed_when: '"COMPLETE" in miniconda_env_update.stdout'
 
