@@ -7,17 +7,17 @@ galaxy_info:
   platforms:
   - name: Ubuntu
     versions:
-     - xenial
-     - trusty
-     - precise
+    - xenial
+    - trusty
+    - precise
   - name: Debian
     versions:
-     - jessie
-     - wheezy
+    - jessie
+    - wheezy
   - name: EL
     versions:
-      - 7
-      - 6
+    - 7
+    - 6
   galaxy_tags:
   - packaging
 dependencies: []
