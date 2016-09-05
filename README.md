@@ -53,6 +53,12 @@ miniconda_env:
       - Flask-Testing
 ```
 
+If you run this role with `gather_facts: no`, manually setting the following variable is required:
+
+- `ansible_system`: choice of `['x86_64', 'i386', 'armv7l', 'ppc64le']`
+- `ansible_os_family`: currently only `Debian` will work, others may not work
+- `ansible_architecture`: choice of `['x86_64', 'i386', 'armv7l', 'ppc64le']`
+
 ## Example Playbooks
 
 ```yaml
