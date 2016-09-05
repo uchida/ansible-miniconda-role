@@ -10,8 +10,8 @@
 
 - name: conda environment {{ miniconda_env.name }} is up-to-date
   command:
-    '"{{ miniconda_prefix }}/bin/conda" env update -n {{ miniconda_env.name }} -f "/tmp/{{ miniconda_env.name }}-environment.yml" -q QUIET'
+    '"{{ miniconda_prefix }}/bin/conda" env update -n "{{ miniconda_env.name }}" -f "/tmp/{{ miniconda_env.name }}-environment.yml" -q QUIET'
   register: miniconda_env_update
-  when: (miniconda_env_create !='') or ('"skipped" in miniconda_env_create.stdout')
+  when: (miniconda_env.name == 'root') or ('"skipped" in miniconda_env_create.stdout')
   changed_when: '"COMPLETE" in miniconda_env_update.stdout'
 
