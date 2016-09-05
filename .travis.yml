@@ -40,7 +40,7 @@ before_install:
   - |
     if [ ${IMAGE} = "fedora" ]; then
       docker exec test dnf makecache
-      docker exec test dnf install -y python ca-certificates
+      docker exec test dnf install -y python ca-certificates python2-dnf
     fi
 
 install:
