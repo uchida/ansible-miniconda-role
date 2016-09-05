@@ -26,17 +26,17 @@ default: `3`: install and use python3 based miniconda.
 `miniconda_version` is a variable to specify version of miniconda.
 default: `"3.16.0"`.
 
-`miniconda_installer_checksum:` is a variable to checksum for miniconda_installer.
+`miniconda_installer_checksum` is a variable to checksum for miniconda_installer.
 default: `""`, do not check the digest.
 
 `miniconda_prefix` is a variable to specify install prefix for miniconda.
 default: `~/miniconda` or `~/miniconda3`, it depends on `miniconda_python`.
 
-`miniconda_update_conda` is a variable to specify wheather to run `conda update conda` or not
-default: `False`: do not update conda.
+`miniconda_update_conda` is a variable to specify wheather to run `conda update conda` or not.
+default: `False`, do not update conda.
 
 `miniconda_env` is a variable to specify conda environment to create.
-default is `""`, nothing will be created.
+default: `""`, nothing will be created.
 its format is exactly same as conda env spec file, for example:
 ```yaml
 miniconda_env:
@@ -52,11 +52,13 @@ miniconda_env:
     - pip:
       - Flask-Testing
 ```
+you can install/update default environment by setting `root` to `miniconda_env.name`.
 
 If you run this role with `gather_facts: no`, manually setting the following variables is required:
 
 - `ansible_system`: choice of `['Linux', 'Darwin']`
-- `ansible_architecture`: choice of `['x86_64', 'i386', 'armv7l', 'armv6l', 'ppc64le']`
+- `ansible_architecture`: choice of `['x86_64', 'i386', 'armv7l', 'armv6l', 'ppc64le']`,
+  check `miniconda_version` and availability in [miniconda installer archive](https://repo.continuum.io/miniconda/)
 - `ansible_pkg_mgr`: package system, e.g, `apt` or `yum`, `dnf`, etc.
 
 ## Example Playbooks
