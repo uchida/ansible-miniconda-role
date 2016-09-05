@@ -56,8 +56,8 @@ miniconda_env:
 If you run this role with `gather_facts: no`, manually setting the following variables is required:
 
 - `ansible_system`: choice of `['Linux', 'Darwin']`
-- `ansible_os_family`: currently only `Debian` will work, others may not work
 - `ansible_architecture`: choice of `['x86_64', 'i386', 'armv7l', 'armv6l', 'ppc64le']`
+- `ansible_pkg_mgr`: package system, e.g, `apt` or `yum`, `dnf`, etc.
 
 ## Example Playbooks
 
