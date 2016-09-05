@@ -14,6 +14,11 @@
     state=directory
     follow=yes
 
+- name: tar is installed
+  package:
+    name=tar
+    state=present
+
 - name: bzip2 is installed
   package:
     name=bzip2
