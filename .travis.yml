@@ -27,8 +27,21 @@ before_install:
   - docker version
   - docker pull $IMAGE:$TAG
   - docker run --name test -di $IMAGE:$TAG /bin/sh
-  - docker exec test apt-get update
-  - docker exec test apt-get install -y python ca-certificates
+  - |
+    if [ ${IMAGE} = "ubuntu" ] || [ ${IMAGE} = "debian" ]; then
+      docker exec test apt-get update
+      docker exec test apt-get install -y python ca-certificates
+    fi
+  - |
+    if [ ${IMAGE} = "centos" ]; then
+      docker exec test yum makecache
+      docker exec test yum install -y python ca-certificates
+    fi
+  - |
+    if [ ${IMAGE} = "fedora" ]; then
+      docker exec test dnf makecache
+      docker exec test dnf install -y python ca-certificates
+    fi
 
 install:
   - pip install ansible
