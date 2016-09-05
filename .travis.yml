@@ -1,6 +1,15 @@
 ---
 language: python
 python: "2.7"
+env:
+  - IMAGE=ubuntu TAG=xenial
+  - IMAGE=ubuntu TAG=trusty
+  - IMAGE=ubuntu TAG=precise
+  - IMAGE=debian TAG=jessie
+  - IMAGE=debian TAG=wheezy
+  - IMAGE=centos TAG=7
+  - IMAGE=centos TAG=6
+  - IMAGE=fedora TAG=latest
 
 cache: pip
 
@@ -16,10 +25,23 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -o Dpkg::Options::="--force-confdef" -y docker-engine
   - docker version
-  - docker pull ubuntu:latest
-  - docker run --name test -di ubuntu
-  - docker exec test apt-get update
-  - docker exec test apt-get install -y python ca-certificates
+  - docker pull $IMAGE:$TAG
+  - docker run --name test -di $IMAGE:$TAG /bin/sh
+  - |
+    if [ ${IMAGE} = "ubuntu" ] || [ ${IMAGE} = "debian" ]; then
+      docker exec test apt-get update
+      docker exec test apt-get install -y python ca-certificates
+    fi
+  - |
+    if [ ${IMAGE} = "centos" ]; then
+      docker exec test yum makecache
+      docker exec test yum install -y python ca-certificates
+    fi
+  - |
+    if [ ${IMAGE} = "fedora" ]; then
+      docker exec test dnf makecache
+      docker exec test dnf install -y python ca-certificates python2-dnf
+    fi
 
 install:
   - pip install ansible
