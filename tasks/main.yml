@@ -18,11 +18,13 @@
   package:
     name=tar
     state=present
+  when: miniconda_manage_dependencies
 
 - name: bzip2 is installed
   package:
     name=bzip2
     state=present
+  when: miniconda_manage_dependencies
 
 - name: miniconda is installed
   command:
