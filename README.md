@@ -16,6 +16,7 @@ miniconda_python: 3
 miniconda_version: "3.16.0"
 miniconda_installer_checksum: ""
 miniconda_prefix: "{{ ansible_env.HOME }}/miniconda{{ miniconda_python if miniconda_python == 3 else '' }}"
+miniconda_manage_dependencies: True
 miniconda_update_conda: False
 miniconda_env: ""
 ```
@@ -31,6 +32,10 @@ default: `""`, do not check the digest.
 
 `miniconda_prefix` is a variable to specify install prefix for miniconda.
 default: `~/miniconda` or `~/miniconda3`, it depends on `miniconda_python`.
+
+`miniconda_manage_dependencies` is a variable to specify wheather install `tar` and `bzip` or not,
+these are required to run miniconda_installer.
+default: `True`, install `tar` and `bzip`.
 
 `miniconda_update_conda` is a variable to specify wheather to run `conda update conda` or not.
 default: `False`, do not update conda.
