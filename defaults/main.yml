@@ -5,3 +5,5 @@ miniconda_prefix: "{{ ansible_env.HOME }}/miniconda{{ miniconda_python if minico
 miniconda_update_conda: False
 miniconda_env: ""
 miniconda_manage_dependencies: True
+miniconda_env_create_opts: '-q'
+miniconda_env_update_opts: ''

@@ -40,6 +40,13 @@ default: `True`, install `tar` and `bzip`.
 `miniconda_update_conda` is a variable to specify wheather to run `conda update conda` or not.
 default: `False`, do not update conda.
 
+`miniconda_env_create_opts` is a variable to specify extra options for the `conda env create` task
+default: `"-q"`, quiet mode (is recommended to ensure the create works)
+
+`miniconda_env_update_opts` is a variable to specify extra options for the `conda env update` task
+default: `""`, no additional opts
+useful to set '--prune' (remove installed packages not defined in environment)
+
 `miniconda_env` is a variable to specify conda environment to create.
 default: `""`, nothing will be created.
 its format is exactly same as conda env spec file, for example:
