@@ -14,6 +14,7 @@ Available role variables are listed below, along with default values:
 ```yaml
 miniconda_python: 3
 miniconda_version: "3.16.0"
+miniconda_installer: Miniconda{{ "3" if miniconda_python == 3 or miniconda_version not in miniconda_oldversions else "" }}-{{ miniconda_version }}-{{ miniconda_systems[ansible_system] }}-{{ miniconda_architecture[ansible_architecture] }}.sh
 miniconda_installer_checksum: ""
 miniconda_prefix: "{{ ansible_env.HOME }}/miniconda{{ miniconda_python if miniconda_python == 3 else '' }}"
 miniconda_update_conda: False
@@ -25,6 +26,9 @@ default: `3`: install and use python3 based miniconda.
 
 `miniconda_version` is a variable to specify version of miniconda.
 default: `"3.16.0"`.
+
+`miniconda_installer` is a variable to specify the miniconda installer filename.
+default: defined by variables `miniconda_python`,`miniconda_version` and facts `ansible_system`,`ansible_architecture`
 
 `miniconda_installer_checksum:` is a variable to checksum for miniconda_installer.
 default: `""`, do not check the digest.
