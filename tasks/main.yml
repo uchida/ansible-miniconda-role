@@ -14,11 +14,17 @@
     state=directory
     follow=yes
 
+- name: tar is installed
+  package:
+    name=tar
+    state=present
+  when: miniconda_manage_dependencies
+
 - name: bzip2 is installed
-  apt:
+  package:
     name=bzip2
     state=present
-  when: ansible_os_family == "Debian"
+  when: miniconda_manage_dependencies
 
 - name: miniconda is installed
   command:

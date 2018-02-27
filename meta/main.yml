@@ -1,15 +1,23 @@
 ---
 galaxy_info:
   author: Akihiro Uchida
-  description: role to install miniconda and create conda environment
+  description: ansible role to install miniconda and create conda environment
   license: CC0
   min_ansible_version: 2.0
   platforms:
   - name: Ubuntu
     versions:
-     - wily
-     - vivid
-     - trusty
-  categories:
+    - xenial
+    - trusty
+    - precise
+  - name: Debian
+    versions:
+    - jessie
+    - wheezy
+  - name: EL
+    versions:
+    - 7
+    - 6
+  galaxy_tags:
   - packaging
 dependencies: []

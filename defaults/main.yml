@@ -5,3 +5,6 @@ miniconda_installer_checksum: ""
 miniconda_prefix: "{{ ansible_env.HOME }}/miniconda{{ miniconda_python if miniconda_python == 3 else '' }}"
 miniconda_update_conda: False
 miniconda_env: ""
+miniconda_manage_dependencies: True
+miniconda_env_create_opts: '-q'
+miniconda_env_update_opts: ''
