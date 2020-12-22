@@ -37,11 +37,11 @@ default: `""`, do not check the digest.
 `miniconda_prefix` is a variable to specify install prefix for miniconda.
 default: `~/miniconda` or `~/miniconda3`, it depends on `miniconda_python`.
 
-`miniconda_manage_dependencies` is a variable to specify wheather install `tar` and `bzip` or not,
+`miniconda_manage_dependencies` is a variable to specify whether to install `tar` and `bzip` or not,
 these are required to run miniconda_installer.
 default: `True`, install `tar` and `bzip`.
 
-`miniconda_update_conda` is a variable to specify wheather to run `conda update conda` or not.
+`miniconda_update_conda` is a variable to specify whether to run `conda update conda` or not.
 default: `False`, do not update conda.
 
 `miniconda_env_create_opts` is a variable to specify extra options for the `conda env create` task
